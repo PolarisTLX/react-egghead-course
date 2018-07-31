@@ -1,0 +1,37 @@
+<!-- With JSX way: -->
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+
+<!-- <script type="text/babel">
+  const rootElement = document.getElementById('root');
+  const helloWorld = <div>Hello World</div>
+  const element = (
+    <div className="container">
+      {helloWorld}
+      {helloWorld}
+    </div>
+  )
+  ReactDOM.render(element, rootElement)
+</script> -->
+
+
+<!-- WITH PROPS FUNCTION: -->
+
+<script type="text/babel">
+  const rootElement = document.getElementById('root');
+  // NOTE! M must be capitalised to work:
+  const Message = props => <div>{props.msg}{props.children}</div>
+  const element = (
+    <div className="container">
+      <Message msg='Hello World!' />
+      <Message msg='Goodbye World!' />
+      <br/>
+      <Message children='children prop' />
+      <Message> Other Child Prop </Message>
+    </div>
+  )
+  ReactDOM.render(element, rootElement)
+</script>

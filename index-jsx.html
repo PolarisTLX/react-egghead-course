@@ -1,0 +1,39 @@
+<!-- With JSX way: -->
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<!-- <script type="text/javascript"> -->
+<!-- NOTE!!!!  see script tag change below for babel: -->
+<!-- <script type="text/babel">
+  const rootElement = document.getElementById('root');
+  // const element = React.createElement(
+  //   'div',
+  //   {className: 'container',
+  //   children: 'Hello World!'
+  // })
+  const content = "Hello World!"
+  const myClassName = 'container'
+  const element = <div className={myClassName + '__longer-name'}>{content}</div>
+  ReactDOM.r -->
+
+
+<!-- with a props object instead: -->
+
+
+  <script type="text/babel">
+    const rootElement = document.getElementById('root');
+
+    const content = "Hello World!"
+    const myClassName = 'container'
+    const props = {
+      className: 'container',
+      children: 'Hello World',
+    }
+    const element = <div className="default-name" {...props} />
+    // Override what is in props is provided afterwards:
+    // const element = <div {...props} className="default-name" />
+    // const element = <div {...props}>Overwritten child</div>
+    ReactDOM.render(element, rootElement)
+  </script>
