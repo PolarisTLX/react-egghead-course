@@ -1,0 +1,73 @@
+<body>
+  <div id='root'></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script> -->
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+  <script src="https://unpkg.com/vanilla-tilt@1.4.1/dist/vanilla-tilt.min.js"></script>
+
+  <style>
+    .tilt-root {
+      height: 200px;
+      width: 300px;
+      background-color: pink;
+      position: absolute;
+    }
+    .tilt-child {
+      height: 50px;
+      width: 200px;
+      background-color: white;
+      position: relative;
+      margin: auto;
+      margin-top: -25px
+    }
+    .totally-centered {
+      text-align: center;
+      margin-top: 40%;
+      padding-top: 10px;
+    }
+  </style>
+
+<script type="text/babel">
+
+class Tilt extends React.Component{
+  componentDidMount () {
+    VanillaTilt.init(this.rootNode, {
+      max: 25,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.5,
+    })
+  }
+  render() {
+    return (
+      <div
+        ref={node => (this.rootNode = node)}
+        className="tilt-root"
+      >
+        <div className="tilt-child">
+          <div {...this.props} />
+        </div>
+      </div>
+    )
+  }
+}
+
+
+const element = (
+  <div className="totally-centered">
+    <Tilt>
+      <div className="totally-centered">
+        vanilla-tilt.js
+      </div>
+    </Tilt>
+  </div>
+)
+
+ReactDOM.render(
+  element,
+  document.getElementById('root'),
+)
+</script>
+</body>
